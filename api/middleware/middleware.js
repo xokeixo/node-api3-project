@@ -1,17 +1,12 @@
-// import user from '../users/users-model';
 const Users = require('../users/users-model');
 
 function logger(req, res, next) {
   // DO YOUR MAGIC
-  // const timestamp = new Date().toLocaleString();
-  // const method = req.method;
-  // const url = req.originalUrl;
-  // console.log(`${timestamp} ${method} to ${url}`)
   console.log(req.url, req.method)
   next()
-};
+}
 
-async function validateUserId(req, res, next) {
+const validateUserId = async (req, res, next) => {
   // DO YOUR MAGIC
   try {
     const { id } = req.params
@@ -28,7 +23,8 @@ async function validateUserId(req, res, next) {
     res.status(500).json({
       message: 'problem finding user'
     })
-  };
+  }
+};
 
 
 function validateUser(req, res, next) {
@@ -46,7 +42,8 @@ function validateUser(req, res, next) {
     res.status(500).json({
       message: err.message
     })
-};
+  }
+}
 
 function validatePost(req, res, next) {
   // DO YOUR MAGIC
@@ -63,12 +60,13 @@ function validatePost(req, res, next) {
     res.status(500).json({
       message: err.message
     })
-};
+  }
+}
 
 // do not forget to expose these functions to other modules
 module.exports = {
-logger,
-validateUser,
-validateUserId,
-validatePost
+  logger,
+  validatePost,
+  validateUserId,
+  validateUser
 }
