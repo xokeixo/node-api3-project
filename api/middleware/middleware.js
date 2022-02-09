@@ -13,7 +13,7 @@ const validateUserId = async (req, res, next) => {
     const user = await Users.getById(id)
     if(!user) {
       res.status(404).json({
-        message: 'No such user'
+        message: 'user not found'
       })
     } else {
       req.user = user
@@ -33,7 +33,7 @@ function validateUser(req, res, next) {
     const user = req.body
     if(!user.name) {
       res.status(400).json({
-        message: 'missing require name field'
+        message: 'missing required name field'
       })
     } else {
         next();

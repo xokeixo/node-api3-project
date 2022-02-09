@@ -9,6 +9,7 @@ const usersRouter = require('./users/users-router');
 server.use(express.json());
 server.use(morgan('dev'));
 server.use(helmet())
+server.use(express.json());
 server.use(logger);
 server.use('/api/users', logger, usersRouter);
 
